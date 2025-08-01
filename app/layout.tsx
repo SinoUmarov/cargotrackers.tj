@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "CargoTrack - Professional Cargo Tracking System",
   description: "Track your cargo shipments with real-time updates and professional logistics management.",
-    generator: 'v0.dev'
+ 
 }
 
 export default function RootLayout({
