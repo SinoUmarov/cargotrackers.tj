@@ -95,9 +95,7 @@ export default function Header() {
                   <Button asChild variant="outline" size="sm">
                     <Link href="/admin/register">{t("register")}</Link>
                   </Button>
-                  <Button asChild className="bg-yellow-800 hover:bg-blue-700">
-                    <Link href="/track">{t("trackNow")}</Link>
-                  </Button>
+                 
                 </>
               )}
             </div>
@@ -172,11 +170,7 @@ export default function Header() {
                       </Button>
                     </div>
                   )}
-                  <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
-                    <Link href="/track" onClick={() => setIsMenuOpen(false)}>
-                      {t("trackNow")}
-                    </Link>
-                  </Button>
+                 
                 </div>
               </nav>
             </motion.div>

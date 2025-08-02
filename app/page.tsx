@@ -156,11 +156,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
-
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4">
+<div className="max-w-[1200px] m-auto">  <section className="pt-24 pb-16 px-4 max-w-[1200px] m-auto">
         <div className="container mx-auto max-w-7xl">
-  <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
+  <div className="relative w-full h-[700px] rounded-2xl overflow-hidden shadow-lg">
    
     <video
       autoPlay
@@ -169,7 +167,7 @@ export default function HomePage() {
       playsInline
       className="absolute top-0 left-0 w-full h-full object-cover"
     >
-      <source src="/tracker.mp4" type="video/mp4" />
+      <source src="/make.mp4" type="video/mp4" />
      
     </video>
 
@@ -190,7 +188,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats Section */}
-      <AnimatedSection className="py-16 px-4 bg-white">
+      <AnimatedSection className="py-16 px-4 bg-white ">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {statsData.map((stat, index) => (
@@ -213,7 +211,7 @@ export default function HomePage() {
         </div>
       </AnimatedSection>
       {/* Features Section */}
-      <AnimatedSection className="py-20 px-4 bg-white">
+      <AnimatedSection className="py-20 px-4 bg-white ">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center space-y-4 mb-12">
             <Badge className="bg-blue-50 text-blue-600 border-0 px-4 py-1 text-sm font-medium">
@@ -223,7 +221,7 @@ export default function HomePage() {
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t("featuresDescription")}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
             {featuresData.map((feature, index) => (
               <motion.div
                 key={index}
@@ -256,7 +254,7 @@ export default function HomePage() {
       </AnimatedSection>
 
       {/* Benefits Section */}
-      <AnimatedSection className="py-20 px-4 bg-gray-50">
+      <AnimatedSection className="py-20 px-4 bg-gray-50 ">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -324,7 +322,9 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </AnimatedSection></div>
+      {/* Hero Section */}
+    
       
       <Footer />
     </div>

@@ -107,8 +107,8 @@ export default function TrackPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
-
-      <main className="container mx-auto px-4 py-8 mt-[50px]">
+<div className="max-w-[1200px] m-auto">
+    <main className="container mx-auto px-4 py-8 mt-[50px]">
         {/* Hero Section */}
         <section className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-16">
           <div className="lg:w-1/2 space-y-6">
@@ -326,6 +326,8 @@ export default function TrackPage() {
           </section>
         )}
       </main>
+</div>
+    
 
       <Footer />
     </div>
