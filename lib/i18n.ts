@@ -34,6 +34,13 @@ export const translations = {
     startTracking: "Start Tracking",
     calculateCost: "Calculate Cost",
 
+
+
+    	Trackyourshipment:"	Track your shipment",
+
+
+
+
     // Video Slide
     globalShipping: "Global Shipping",
     fromChinaWorldwide: "From China Worldwide",
@@ -188,6 +195,9 @@ export const translations = {
 ////about
 
  AboutCargoTracker:"О CargoTracker",
+
+	Trackyourshipment:"		Отслеживай свой груз",
+
 
     // Theme
     light: "Светлая",
@@ -352,6 +362,12 @@ export const translations = {
     adminPanel: "Panel de admin",
     logout: "Cerrar sesión",
     trackNow: "Rastrear ahora",
+
+
+
+
+	Trackyourshipment:"Rastrea tu envío",
+
 
     // Theme
     light: "Claro",
@@ -521,6 +537,10 @@ export const translations = {
     adminPanel: "Panneau admin",
     logout: "Se déconnecter",
     trackNow: "Suivre maintenant",
+
+
+	Trackyourshipment:"Rastrea tu envío",
+
 
     // Theme
     light: "Clair",

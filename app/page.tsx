@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Header from "@/components/Header"
@@ -23,8 +22,7 @@ import {
   Star,
   Zap,
   Target,
-  Truck,
-  Play,
+ 
 } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/LanguageContext"
@@ -68,37 +66,43 @@ export default function HomePage() {
       icon: Globe,
       title: t("telegramIntegration"),
       description: t("telegramIntegrationDesc"),
-      color: "blue",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
     },
     {
       icon: Clock,
       title: t("realTimeTracking"),
       description: t("realTimeTrackingDesc"),
-      color: "emerald",
+      color: "text-emerald-600",
+      bgColor: "bg-emerald-50",
     },
     {
       icon: Shield,
       title: t("enterpriseSecurity"),
       description: t("enterpriseSecurityDesc"),
-      color: "purple",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50",
     },
     {
       icon: BarChart3,
       title: t("advancedAnalytics"),
       description: t("advancedAnalyticsDesc"),
-      color: "orange",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
     },
     {
       icon: Users,
       title: t("teamManagement"),
       description: t("teamManagementDesc"),
-      color: "teal",
+      color: "text-teal-600",
+      bgColor: "bg-teal-50",
     },
     {
       icon: Package,
       title: t("multiCarrierSupport"),
       description: t("multiCarrierSupportDesc"),
-      color: "indigo",
+      color: "text-indigo-600",
+      bgColor: "bg-indigo-50",
     },
   ]
 
@@ -109,199 +113,86 @@ export default function HomePage() {
       icon: Star,
       title: t("reason1Title"),
       description: t("reason1Desc"),
-      gradient: "from-yellow-500 to-orange-500",
+      color: "bg-gradient-to-br from-yellow-100 to-orange-100",
+      iconColor: "text-yellow-600",
     },
     {
       icon: Zap,
       title: t("reason2Title"),
       description: t("reason2Desc"),
-      gradient: "from-blue-500 to-cyan-500",
+      color: "bg-gradient-to-br from-blue-50 to-cyan-50",
+      iconColor: "text-blue-600",
     },
     {
       icon: Globe,
       title: t("reason3Title"),
       description: t("reason3Desc"),
-      gradient: "from-green-500 to-emerald-500",
+      color: "bg-gradient-to-br from-green-50 to-emerald-50",
+      iconColor: "text-green-600",
     },
     {
       icon: Clock,
       title: t("reason4Title"),
       description: t("reason4Desc"),
-      gradient: "from-purple-500 to-violet-500",
+      color: "bg-gradient-to-br from-purple-50 to-violet-50",
+      iconColor: "text-purple-600",
     },
     {
       icon: Target,
       title: t("reason5Title"),
       description: t("reason5Desc"),
-      gradient: "from-pink-500 to-rose-500",
+      color: "bg-gradient-to-br from-pink-50 to-rose-50",
+      iconColor: "text-pink-600",
     },
     {
       icon: Shield,
       title: t("reason6Title"),
       description: t("reason6Desc"),
-      gradient: "from-indigo-500 to-blue-500",
+      color: "bg-gradient-to-br from-indigo-50 to-blue-50",
+      iconColor: "text-indigo-600",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
 
       {/* Hero Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-7xl">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            navigation={true}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 6000, disableOnInteraction: false }}
-            loop={true}
-            className="rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <SwiperSlide>
-              <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24 px-8">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                  <Badge className="bg-white/20 text-white border-0 px-6 py-2 text-lg font-medium">
-                    {t("professionalLogistics")}
-                  </Badge>
-                  <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                    {t("trackYourCargo")}
-                    <span className="block text-blue-200">{t("withConfidence")}</span>
-                  </h1>
-                  <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                    {t("heroDescription")}
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="text-lg px-8 py-4 bg-white text-blue-600 hover:bg-gray-100 shadow-lg"
-                    >
-                      <Link href="/track">
-                        <Package className="mr-2 h-5 w-5" />
-                        {t("startTracking")}
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="lg"
-                      className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10 bg-transparent"
-                    >
-                      <Link href="/calculator">
-                        <BarChart3 className="mr-2 h-5 w-5" />
-                        {t("calculateCost")}
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
+  <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
+   
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover"
+    >
+      <source src="/tracker.mp4" type="video/mp4" />
+     
+    </video>
 
-            {/* Video Slide */}
-            <SwiperSlide>
-              <div className="bg-gradient-to-r h-[800px] from-orange-600 to-red-700 text-white py-24 px-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-                  <Badge className="bg-white/20 text-white border-0 px-6 py-2 text-lg font-medium">
-                    {t("globalShipping")}
-                  </Badge>
-                  <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                    {t("fromChinaWorldwide")}
-                    <span className="block text-orange-200">{t("reliableDelivery")}</span>
-                  </h1>
-                  <p className="text-xl lg:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
-                    {t("videoDescription")}
-                  </p>
+    <div className="absolute inset-0 bg-black/50" />
 
-                  {/* Video Preview */}
-                  <div className="relative max-w-2xl mx-auto h-[500px] mt-[-100px ]">
-                    <div className="aspect-video bg-black/30 rounded-xl border-2 border-white/20 flex items-center justify-center backdrop-blur-sm">
-                      <div className="text-center space-y-4">
-                        <div className="h-20 w-20 bg-white/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
-                          <Play className="h-10 w-10 text-white ml-1" />
-                        </div>
-                        <p className="text-white/80 text-lg">Cargo Loading from China</p>
-                        <p className="text-white/60 text-sm">Professional handling & secure packaging</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Button
-                    asChild
-                    size="lg"
-                    className="text-lg px-8 py-4 bg-white text-orange-600 hover:bg-gray-100 shadow-lg"
-                  >
-                    <Link href="/about">
-                      <Truck className="mr-2 h-5 w-5" />
-                      {t("watchDemo")}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white py-24 px-8">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                  <Badge className="bg-white/20 text-white border-0 px-6 py-2 text-lg font-medium">
-                    {t("realTimeCommunication")}
-                  </Badge>
-                  <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                    {t("instantNotifications")}
-                    <span className="block text-emerald-200">{t("stayInformed")}</span>
-                  </h1>
-                  <p className="text-xl lg:text-2xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-                    {t("telegramDescription")}
-                  </p>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="text-lg px-8 py-4 bg-white text-emerald-600 hover:bg-gray-100 shadow-lg"
-                  >
-                    <Link href="/about">
-                      <Globe className="mr-2 h-5 w-5" />
-                      {t("learnMore")}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="bg-gradient-to-r from-slate-600 to-slate-800 text-white py-24 px-8">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                  <Badge className="bg-white/20 text-white border-0 px-6 py-2 text-lg font-medium">
-                    {t("transparentPricing")}
-                  </Badge>
-                  <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                    {t("smartCalculator")}
-                    <span className="block text-slate-200">{t("noHiddenFees")}</span>
-                  </h1>
-                  <p className="text-xl lg:text-2xl text-slate-100 max-w-3xl mx-auto leading-relaxed">
-                    {t("pricingDescription")}
-                  </p>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="text-lg px-8 py-4 bg-white text-slate-600 hover:bg-gray-100 shadow-lg"
-                  >
-                    <Link href="/calculator">
-                      <BarChart3 className="mr-2 h-5 w-5" />
-                      {t("tryCalculator")}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
+ 
+    <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("Trackyourshipment")}</h1>
+      <p className="text-lg md:text-xl max-w-2xl">
+        Вся информация о перемещении твоего груза в реальном времени — быстро, точно, удобно.
+      </p>
+      <button className="mt-6 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 rounded-full text-white text-sm font-medium transition">
+        Начать отслеживание
+      </button>
+    </div>
+  </div>
+</div>
       </section>
 
       {/* Stats Section */}
-      <AnimatedSection className="py-16 px-4 bg-white dark:bg-gray-900">
+      <AnimatedSection className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {statsData.map((stat, index) => (
               <motion.div
                 key={index}
@@ -311,72 +202,28 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="h-16 w-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <div className="h-16 w-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="h-8 w-8 text-blue-600" />
                 </div>
-                <div className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">{stat.number}</div>
-                <p className="text-gray-600 dark:text-gray-300 font-medium">{stat.label}</p>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.number}</div>
+                <p className="text-gray-600 font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </AnimatedSection>
-
-      {/* Why Choose Us Section */}
-      <AnimatedSection className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 border-0 px-4 py-2 text-sm font-medium">
-              {t("whyChooseUs")}
-            </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">{t("trustedPartner")}</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{t("whyChooseUsDescription")}</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyChooseUsData.map((reason, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-900">
-                  <CardHeader className="p-8">
-                    <div
-                      className={`h-14 w-14 bg-gradient-to-r ${reason.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <reason.icon className="h-7 w-7 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                      {reason.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
-                      {reason.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
-
       {/* Features Section */}
-      <AnimatedSection className="py-20 px-4 bg-white dark:bg-gray-900">
+      <AnimatedSection className="py-20 px-4 bg-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 border-0 px-4 py-2 text-sm font-medium">
+          <div className="text-center space-y-4 mb-12">
+            <Badge className="bg-blue-50 text-blue-600 border-0 px-4 py-1 text-sm font-medium">
               {t("professionalFeatures")}
             </Badge>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">{t("whyChooseCargoTrack")}</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">{t("featuresDescription")}</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">{t("whyChooseCargoTrack")}</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">{t("featuresDescription")}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuresData.map((feature, index) => (
               <motion.div
                 key={index}
@@ -387,17 +234,17 @@ export default function HomePage() {
                 whileHover={{ y: -5 }}
                 className="group"
               >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-900">
-                  <CardHeader className="p-8">
+                <Card className="h-full border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+                  <CardHeader className="p-6">
                     <div
-                      className={`h-14 w-14 bg-${feature.color}-100 dark:bg-${feature.color}-900 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                      className={`h-12 w-12 ${feature.bgColor} rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition-transform`}
                     >
-                      <feature.icon className={`h-7 w-7 text-${feature.color}-600 dark:text-${feature.color}-400`} />
+                      <feature.icon className={`h-6 w-6 ${feature.color}`} />
                     </div>
-                    <CardTitle className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    <CardTitle className="text-xl font-bold mb-2 text-gray-900">
                       {feature.title}
                     </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
+                    <CardDescription className="text-gray-600 leading-relaxed">
                       {feature.description}
                     </CardDescription>
                   </CardHeader>
@@ -409,21 +256,21 @@ export default function HomePage() {
       </AnimatedSection>
 
       {/* Benefits Section */}
-      <AnimatedSection className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+      <AnimatedSection className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
               <div className="space-y-4">
-                <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 border-0 px-4 py-2 text-sm font-medium">
+                <Badge className="bg-emerald-50 text-emerald-600 border-0 px-4 py-1 text-sm font-medium">
                   {t("businessBenefits")}
                 </Badge>
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   {t("streamlineOperations")}
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">{t("benefitsDescription")}</p>
+                <p className="text-lg text-gray-600 leading-relaxed">{t("benefitsDescription")}</p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {benefitsData.map((benefit, index) => (
                   <motion.div
                     key={index}
@@ -433,26 +280,26 @@ export default function HomePage() {
                     viewport={{ once: true }}
                     className="flex items-center gap-4"
                   >
-                    <div className="h-8 w-8 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                    <div className="h-8 w-8 bg-emerald-50 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="h-5 w-5 text-emerald-600" />
                     </div>
-                    <span className="text-lg text-gray-700 dark:text-gray-300">{benefit}</span>
+                    <span className="text-gray-700">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
             <div className="relative">
-              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-0 shadow-xl">
-                <CardHeader className="p-8">
+              <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-gray-200 shadow-sm">
+                <CardHeader className="p-6">
                   <div className="space-y-6">
                     <div className="flex items-center gap-4">
                       <div className="h-12 w-12 bg-blue-600 rounded-xl flex items-center justify-center">
                         <Award className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t("industryRecognition")}</h3>
-                        <p className="text-gray-600 dark:text-gray-300">{t("trustedByCompanies")}</p>
+                        <h3 className="text-xl font-bold text-gray-900">{t("industryRecognition")}</h3>
+                        <p className="text-gray-600">{t("trustedByCompanies")}</p>
                       </div>
                     </div>
 
@@ -464,10 +311,10 @@ export default function HomePage() {
                       ].map((item, index) => (
                         <div
                           key={index}
-                          className="flex justify-between items-center p-4 bg-white dark:bg-gray-800 rounded-xl"
+                          className="flex justify-between items-center p-4 bg-white rounded-lg border border-gray-200"
                         >
-                          <span className="text-gray-600 dark:text-gray-300 font-medium">{item.label}</span>
-                          <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{item.metric}</span>
+                          <span className="text-gray-600 font-medium">{item.label}</span>
+                          <span className="text-xl font-bold text-blue-600">{item.metric}</span>
                         </div>
                       ))}
                     </div>
@@ -478,57 +325,9 @@ export default function HomePage() {
           </div>
         </div>
       </AnimatedSection>
-
-      {/* CTA Section */}
-      <AnimatedSection className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-800">
-        <div className="container mx-auto max-w-5xl text-center">
-          <div className="space-y-8 text-white">
-            <Badge className="bg-white/20 text-white border-0 px-6 py-3 text-lg font-medium">
-              {t("getStartedToday")}
-            </Badge>
-            <h2 className="text-4xl lg:text-6xl font-bold">{t("readyToOptimize")}</h2>
-            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">{t("ctaDescription")}</p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  asChild
-                  size="lg"
-                  className="text-xl px-12 py-6 bg-white text-blue-600 hover:bg-gray-100 shadow-xl"
-                >
-                  <Link href="/track">
-                    {t("startTracking")}
-                    <ArrowRight className="ml-2 h-6 w-6" />
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  asChild
-                  size="lg"
-                  className="text-xl px-12 py-6 bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl"
-                >
-                  <Link href="/calculator">
-                    <BarChart3 className="mr-2 h-6 w-6" />
-                    {t("calculateCost")}
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="text-xl px-12 py-6 border-white/30 text-white hover:bg-white/10 bg-transparent"
-                >
-                  <Link href="/admin/register">{t("contactSales")}</Link>
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
-
+      
       <Footer />
     </div>
   )
+  
 }

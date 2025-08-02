@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Search, Package, MapPin, Clock, Truck, CheckCircle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import Image from 'next/image'
 
 // Mock tracking data
 const mockTrackingData = {
@@ -17,16 +18,16 @@ const mockTrackingData = {
     statusColor: "default" as const,
     origin: "New York, NY",
     destination: "Los Angeles, CA",
-    estimatedDelivery: "2024-02-15",
+    estimatedDelivery: "February 15, 2024",
     currentLocation: "Chicago, IL",
     weight: "2.5 kg",
-    dimensions: "30x20x15 cm",
+    dimensions: "30×20×15 cm",
     carrier: "Express Logistics",
     trackingHistory: [
-      { date: "2024-02-10 09:00", location: "New York, NY", status: "Package picked up", icon: Package },
-      { date: "2024-02-11 14:30", location: "Philadelphia, PA", status: "In transit", icon: Truck },
-      { date: "2024-02-12 08:15", location: "Chicago, IL", status: "Arrived at sorting facility", icon: MapPin },
-      { date: "2024-02-12 16:45", location: "Chicago, IL", status: "Out for delivery", icon: Truck },
+      { date: "Feb 10, 2024 • 09:00 AM", location: "New York, NY", status: "Package picked up", icon: Package },
+      { date: "Feb 11, 2024 • 02:30 PM", location: "Philadelphia, PA", status: "In transit", icon: Truck },
+      { date: "Feb 12, 2024 • 08:15 AM", location: "Chicago, IL", status: "Arrived at sorting facility", icon: MapPin },
+      { date: "Feb 12, 2024 • 04:45 PM", location: "Chicago, IL", status: "Out for delivery", icon: Truck },
     ],
   },
   TRK001234568: {
@@ -34,16 +35,16 @@ const mockTrackingData = {
     statusColor: "secondary" as const,
     origin: "Miami, FL",
     destination: "Atlanta, GA",
-    estimatedDelivery: "2024-02-10",
+    estimatedDelivery: "February 10, 2024",
     currentLocation: "Atlanta, GA",
     weight: "1.2 kg",
-    dimensions: "25x15x10 cm",
+    dimensions: "25×15×10 cm",
     carrier: "Fast Delivery Co",
     trackingHistory: [
-      { date: "2024-02-08 10:00", location: "Miami, FL", status: "Package picked up", icon: Package },
-      { date: "2024-02-09 12:30", location: "Jacksonville, FL", status: "In transit", icon: Truck },
-      { date: "2024-02-10 09:15", location: "Atlanta, GA", status: "Out for delivery", icon: Truck },
-      { date: "2024-02-10 15:30", location: "Atlanta, GA", status: "Delivered", icon: CheckCircle },
+      { date: "Feb 8, 2024 • 10:00 AM", location: "Miami, FL", status: "Package picked up", icon: Package },
+      { date: "Feb 9, 2024 • 12:30 PM", location: "Jacksonville, FL", status: "In transit", icon: Truck },
+      { date: "Feb 10, 2024 • 09:15 AM", location: "Atlanta, GA", status: "Out for delivery", icon: Truck },
+      { date: "Feb 10, 2024 • 03:30 PM", location: "Atlanta, GA", status: "Delivered", icon: CheckCircle },
     ],
   },
   TRK001234569: {
@@ -51,14 +52,14 @@ const mockTrackingData = {
     statusColor: "outline" as const,
     origin: "Seattle, WA",
     destination: "Portland, OR",
-    estimatedDelivery: "2024-02-16",
+    estimatedDelivery: "February 16, 2024",
     currentLocation: "Seattle, WA",
     weight: "5.0 kg",
-    dimensions: "40x30x25 cm",
+    dimensions: "40×30×25 cm",
     carrier: "Regional Express",
     trackingHistory: [
-      { date: "2024-02-12 14:00", location: "Seattle, WA", status: "Order received", icon: Package },
-      { date: "2024-02-12 16:30", location: "Seattle, WA", status: "Processing at warehouse", icon: Clock },
+      { date: "Feb 12, 2024 • 02:00 PM", location: "Seattle, WA", status: "Order received", icon: Package },
+      { date: "Feb 12, 2024 • 04:30 PM", location: "Seattle, WA", status: "Processing at warehouse", icon: Clock },
     ],
   },
 }
@@ -104,140 +105,229 @@ export default function TrackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Header />
 
-      <div className="container mx-auto max-w-4xl px-4 py-12 mt-[60px]">
-        <div className="space-y-8">
-          {/* Header */}
-          <div className="text-center space-y-4">
-            <h1 className="text-3xl lg:text-4xl font-bold">Track Your Package</h1>
-            <p className="text-xl text-muted-foreground">
-              Enter your tracking code to get real-time updates on your shipment
+      <main className="container mx-auto px-4 py-8 mt-[50px]">
+        {/* Hero Section */}
+        <section className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-16">
+          <div className="lg:w-1/2 space-y-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Track Your <span className="text-gray-600">Shipment</span> in Real Time
+            </h1>
+            <p className="text-xl text-gray-600">
+              Get instant updates on your package's journey from pickup to delivery
             </p>
-          </div>
-
-          {/* Tracking Input */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Search className="h-5 w-5" />
-                Enter Tracking Code
-              </CardTitle>
-              <CardDescription>Try: TRK001234567, TRK001234568, or TRK001234569</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex gap-4">
+            
+            <div className="bg-white rounded-xl shadow-md p-6 max-w-2xl">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Input
-                  placeholder="Enter tracking code (e.g., TRK001234567)"
+                  placeholder="Enter tracking number (e.g., TRK001234567)"
                   value={trackingCode}
                   onChange={(e) => setTrackingCode(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleTrack()}
-                  className="text-lg"
+                  className="text-lg py-6 px-4 border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/50"
                 />
-                <Button onClick={handleTrack} disabled={isLoading} size="lg">
-                  {isLoading ? "Tracking..." : "Track"}
+                <Button 
+                  onClick={handleTrack} 
+                  disabled={isLoading} 
+                  size="lg"
+                  className="py-6 text-lg font-semibold"
+                >
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Tracking...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <Search className="h-5 w-5" />
+                      Track Package
+                    </span>
+                  )}
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+              <p className="mt-3 text-sm text-gray-500">
+                Try: TRK001234567, TRK001234568, or TRK001234569
+              </p>
+            </div>
+          </div>
 
-          {/* Tracking Results */}
-          {trackingResult && (
-            <div className="space-y-6">
-              {/* Status Overview */}
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-2">
-                      <Package className="h-5 w-5" />
+          <div className="lg:w-1/2 rounded-lg overflow-hidden shadow-xl">
+  <video
+    src="/make.mp4"   
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="w-full h-auto object-cover"
+  />
+</div>
+
+        </section>
+
+        {/* Tracking Results */}
+        {trackingResult && (
+          <section className="mb-16">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              {/* Status Header */}
+              <div className="bg-gray-500 to-blue-300 p-6 text-white">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-3">
+                      <Package className="h-8 w-8" />
                       {trackingResult.code}
-                    </CardTitle>
-                    <Badge variant={trackingResult.statusColor}>{trackingResult.status}</Badge>
+                    </h2>
+                    <p className="text-blue-100 mt-1">{trackingResult.carrier}</p>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground">FROM</h4>
-                        <p className="text-lg">{trackingResult.origin}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground">TO</h4>
-                        <p className="text-lg">{trackingResult.destination}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground">CURRENT LOCATION</h4>
-                        <p className="text-lg flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-primary" />
-                          {trackingResult.currentLocation}
-                        </p>
-                      </div>
-                    </div>
+                  <Badge 
+                    variant={trackingResult.statusColor} 
+                    className="text-lg py-2 px-4 bg-white/10 hover:bg-white/20 border-white/20"
+                  >
+                    {trackingResult.status}
+                  </Badge>
+                </div>
+              </div>
 
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground">ESTIMATED DELIVERY</h4>
-                        <p className="text-lg">{trackingResult.estimatedDelivery}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm text-muted-foreground">CARRIER</h4>
-                        <p className="text-lg">{trackingResult.carrier}</p>
-                      </div>
-                      <div className="flex gap-6">
-                        <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground">WEIGHT</h4>
-                          <p>{trackingResult.weight}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground">DIMENSIONS</h4>
-                          <p>{trackingResult.dimensions}</p>
-                        </div>
-                      </div>
-                    </div>
+              {/* Package Details */}
+              <div className="grid md:grid-cols-3 gap-6 p-6 border-b">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Origin</h3>
+                  <p className="text-lg font-medium">{trackingResult.origin}</p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Destination</h3>
+                  <p className="text-lg font-medium">{trackingResult.destination}</p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Estimated Delivery</h3>
+                  <p className="text-lg font-medium">{trackingResult.estimatedDelivery}</p>
+                </div>
+              </div>
+
+              {/* Current Status */}
+              <div className="p-6 border-b">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-100 p-3 rounded-full">
+                    <MapPin className="h-6 w-6 text-blue-600" />
                   </div>
-                </CardContent>
-              </Card>
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Current Location</h3>
+                    <p className="text-xl font-medium">{trackingResult.currentLocation}</p>
+                  </div>
+                </div>
+              </div>
 
-              {/* Tracking History */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
-                    Tracking History
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
+              {/* Package Info */}
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Weight</h3>
+                  <p className="text-lg">{trackingResult.weight}</p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Dimensions</h3>
+                  <p className="text-lg">{trackingResult.dimensions}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Tracking Timeline */}
+            <div className="mt-8 bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="p-6 border-b">
+                <h2 className="text-2xl font-bold flex items-center gap-3">
+                  <Clock className="h-6 w-6 text-primary" />
+                  Tracking History
+                </h2>
+              </div>
+              
+              <div className="p-6">
+                <div className="relative">
+                  {/* Timeline */}
+                  <div className="space-y-8">
                     {trackingResult.trackingHistory.map((event: any, index: number) => (
-                      <div key={index} className="flex gap-4">
+                      <div key={index} className="flex gap-4 relative">
+                        {/* Icon and line */}
                         <div className="flex flex-col items-center">
-                          <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
-                            <event.icon className="h-5 w-5 text-primary" />
+                          <div className={`h-10 w-10 rounded-full flex items-center justify-center 
+                            ${index === 0 ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'}`}>
+                            <event.icon className="h-5 w-5" />
                           </div>
                           {index < trackingResult.trackingHistory.length - 1 && (
-                            <div className="w-px h-8 bg-border mt-2" />
+                            <div className="w-px h-full bg-gray-200 absolute top-10 left-5" />
                           )}
                         </div>
-                        <div className="flex-1 pb-4">
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-semibold">{event.status}</h4>
-                            <span className="text-sm text-muted-foreground">{event.date}</span>
+                        
+                        {/* Event details */}
+                        <div className="flex-1 pb-8">
+                          <div className="bg-gray-50 rounded-lg p-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                              <h4 className="font-semibold text-lg">{event.status}</h4>
+                              <span className="text-sm text-gray-500">{event.date}</span>
+                            </div>
+                            <p className="text-gray-600 mt-1 flex items-center gap-2">
+                              <MapPin className="h-4 w-4 text-gray-400" />
+                              {event.location}
+                            </p>
                           </div>
-                          <p className="text-muted-foreground">{event.location}</p>
                         </div>
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* How It Works */}
+        {!trackingResult && (
+          <section className="py-12">
+            <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                    <Search className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <CardTitle>Enter Tracking Number</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Input your unique tracking code found in your shipping confirmation email or receipt.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="bg-green-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                    <Package className="h-6 w-6 text-green-600" />
+                  </div>
+                  <CardTitle>View Package Details</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>See your package's current status, location, and estimated delivery date.</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                    <Truck className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <CardTitle>Track Journey</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Follow your package's journey from pickup to delivery with real-time updates.</p>
                 </CardContent>
               </Card>
             </div>
-          )}
-        </div>
-      </div>
+          </section>
+        )}
+      </main>
 
       <Footer />
     </div>
   )
-}
+} 

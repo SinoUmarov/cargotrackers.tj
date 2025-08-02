@@ -103,28 +103,25 @@ export default function CalculatorPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-teal-900/20 to-cyan-900/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-background/50 to-background" />
-
-        <div className="container mx-auto max-w-4xl text-center relative">
-          <div className="space-y-8">
-            <div className="mx-auto h-20 w-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center shadow-2xl">
-              <Calculator className="h-10 w-10 text-white" />
+      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-teal-50">
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="space-y-6">
+            <div className="mx-auto h-16 w-16 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
+              <Calculator className="h-8 w-8 text-blue-600" />
             </div>
-            <Badge className="w-fit mx-auto bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 px-6 py-3 text-lg font-medium">
-              <Sparkles className="mr-2 h-5 w-5" />
+            <Badge className="w-fit mx-auto bg-blue-100 text-blue-800 border-blue-200 px-4 py-1 hover:bg-blue-200 transition-colors">
+              <Sparkles className="mr-2 h-4 w-4" />
               Smart Calculator
             </Badge>
-            <h1 className="text-4xl lg:text-6xl font-black tracking-tight bg-gradient-to-r from-foreground via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl lg:text-5xl font-bold tracking-tight text-gray-900">
               Shipping Cost Calculator
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-              Get instant, accurate shipping quotes with our AI-powered transparent pricing system
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Get instant, accurate shipping quotes with our transparent pricing system
             </p>
             <Badge
               variant="secondary"
-              className="text-lg px-6 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-800 border-0"
+              className="text-base px-4 py-1 bg-white text-blue-600 border border-blue-200"
             >
               Base Rate: ${pricePerKg}/kg
             </Badge>
@@ -133,23 +130,23 @@ export default function CalculatorPage() {
       </section>
 
       <div className="container mx-auto max-w-6xl px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Calculator Form */}
-          <Card className="border-2 border-primary/10 shadow-2xl bg-gradient-to-br from-card to-muted/20">
-            <CardHeader className="pb-8">
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="h-10 w-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
-                  <Package className="h-6 w-6 text-white" />
+          <Card className="border border-gray-200 bg-white shadow-sm">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-3 text-xl">
+                <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Package className="h-5 w-5 text-blue-600" />
                 </div>
                 Package Details
               </CardTitle>
-              <CardDescription className="text-lg">
+              <CardDescription>
                 Enter your package information to get an accurate, instant quote
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-8">
-              <div className="space-y-3">
-                <Label htmlFor="weight" className="text-lg font-medium">
+            <CardContent className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="weight" className="font-medium">
                   Package Weight (kg)
                 </Label>
                 <Input
@@ -160,23 +157,23 @@ export default function CalculatorPage() {
                   onChange={(e) => setWeight(e.target.value)}
                   min="0.1"
                   step="0.1"
-                  className="text-lg py-3 border-2 focus:border-emerald-500"
+                  className="py-3 border-gray-300 focus:border-blue-500"
                 />
               </div>
 
-              <div className="space-y-3">
-                <Label htmlFor="destination" className="text-lg font-medium">
+              <div className="space-y-2">
+                <Label htmlFor="destination" className="font-medium">
                   Destination Type
                 </Label>
                 <Select value={destination} onValueChange={setDestination}>
-                  <SelectTrigger className="text-lg py-3 border-2 focus:border-emerald-500">
+                  <SelectTrigger className="py-3 border-gray-300 focus:border-blue-500">
                     <SelectValue placeholder="Select destination type" />
                   </SelectTrigger>
                   <SelectContent>
                     {destinations.map((dest) => (
-                      <SelectItem key={dest.value} value={dest.value} className="text-lg py-3">
+                      <SelectItem key={dest.value} value={dest.value} className="py-2">
                         <div className="flex items-center gap-3">
-                          <MapPin className="h-5 w-5 text-emerald-600" />
+                          <MapPin className="h-4 w-4 text-blue-500" />
                           {dest.label}
                         </div>
                       </SelectItem>
@@ -185,23 +182,23 @@ export default function CalculatorPage() {
                 </Select>
               </div>
 
-              <div className="space-y-3">
-                <Label htmlFor="service" className="text-lg font-medium">
+              <div className="space-y-2">
+                <Label htmlFor="service" className="font-medium">
                   Service Type
                 </Label>
                 <Select value={service} onValueChange={setService}>
-                  <SelectTrigger className="text-lg py-3 border-2 focus:border-emerald-500">
+                  <SelectTrigger className="py-3 border-gray-300 focus:border-blue-500">
                     <SelectValue placeholder="Select service type" />
                   </SelectTrigger>
                   <SelectContent>
                     {services.map((srv) => (
-                      <SelectItem key={srv.value} value={srv.value} className="text-lg py-3">
+                      <SelectItem key={srv.value} value={srv.value} className="py-2">
                         <div className="flex items-center justify-between w-full">
                           <div className="flex items-center gap-3">
-                            <Truck className="h-5 w-5 text-emerald-600" />
+                            <Truck className="h-4 w-4 text-blue-500" />
                             {srv.label}
                           </div>
-                          <Badge variant="secondary" className="ml-4">
+                          <Badge variant="outline" className="ml-4 text-xs">
                             {srv.days}
                           </Badge>
                         </div>
@@ -211,18 +208,18 @@ export default function CalculatorPage() {
                 </Select>
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-3 pt-2">
                 <Button
                   onClick={calculateCost}
-                  className="flex-1 text-lg py-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-xl"
+                  className="flex-1 py-4 bg-blue-600 hover:bg-blue-700"
                 >
-                  <Calculator className="mr-2 h-5 w-5" />
+                  <Calculator className="mr-2 h-4 w-4" />
                   Calculate Cost
                 </Button>
                 <Button
                   variant="outline"
                   onClick={resetCalculator}
-                  className="px-8 py-6 text-lg border-2 bg-transparent"
+                  className="py-4 border-gray-300 bg-white hover:bg-gray-50"
                 >
                   Reset
                 </Button>
@@ -231,15 +228,15 @@ export default function CalculatorPage() {
           </Card>
 
           {/* Results */}
-          <Card className="border-2 border-primary/10 shadow-2xl bg-gradient-to-br from-card to-muted/20">
-            <CardHeader className="pb-8">
-              <CardTitle className="flex items-center gap-3 text-2xl">
-                <div className="h-10 w-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <DollarSign className="h-6 w-6 text-white" />
+          <Card className="border border-gray-200 bg-white shadow-sm">
+            <CardHeader className="pb-6">
+              <CardTitle className="flex items-center gap-3 text-xl">
+                <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <DollarSign className="h-5 w-5 text-blue-600" />
                 </div>
                 Cost Breakdown
               </CardTitle>
-              <CardDescription className="text-lg">
+              <CardDescription>
                 {isCalculated
                   ? "Your detailed shipping cost calculation"
                   : "Fill the form to see your personalized quote"}
@@ -247,73 +244,73 @@ export default function CalculatorPage() {
             </CardHeader>
             <CardContent>
               {isCalculated ? (
-                <div className="space-y-8">
-                  <div className="space-y-6">
-                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
-                      <span className="text-muted-foreground text-lg">
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">
                         Base Cost ({weight} kg × ${pricePerKg})
                       </span>
-                      <span className="text-lg font-semibold">
+                      <span className="font-medium">
                         ${(Number.parseFloat(weight) * pricePerKg).toFixed(2)}
                       </span>
                     </div>
 
-                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
-                      <span className="text-muted-foreground text-lg">Destination Multiplier</span>
-                      <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">Destination Multiplier</span>
+                      <Badge className="bg-blue-100 text-blue-800">
                         ×{destinations.find((d) => d.value === destination)?.multiplier}
                       </Badge>
                     </div>
 
-                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
-                      <span className="text-muted-foreground text-lg">Service Multiplier</span>
-                      <Badge className="bg-gradient-to-r from-purple-500 to-violet-500 text-white">
+                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                      <span className="text-gray-600">Service Multiplier</span>
+                      <Badge className="bg-purple-100 text-purple-800">
                         ×{services.find((s) => s.value === service)?.multiplier}
                       </Badge>
                     </div>
 
                     <Separator />
 
-                    <div className="flex justify-between items-center p-6 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-xl border-2 border-emerald-200 dark:border-emerald-800">
-                      <span className="text-2xl font-bold">Total Cost</span>
-                      <span className="text-3xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                    <div className="flex justify-between items-center p-4 bg-blue-50 rounded-lg border border-blue-100">
+                      <span className="text-xl font-semibold">Total Cost</span>
+                      <span className="text-2xl font-bold text-blue-600">
                         ${totalCost.toFixed(2)}
                       </span>
                     </div>
                   </div>
 
                   {selectedService && (
-                    <Card className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-blue-200 dark:border-blue-800">
-                      <CardContent className="p-6">
-                        <div className="flex items-center gap-3 mb-3">
-                          <Clock className="h-6 w-6 text-blue-600" />
-                          <span className="text-xl font-bold">Estimated Delivery</span>
+                    <Card className="bg-blue-50 border border-blue-100">
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Clock className="h-5 w-5 text-blue-600" />
+                          <span className="font-medium">Estimated Delivery</span>
                         </div>
-                        <p className="text-lg text-blue-700 dark:text-blue-300">{selectedService.days}</p>
+                        <p className="text-blue-700">{selectedService.days}</p>
                       </CardContent>
                     </Card>
                   )}
 
-                  <div className="space-y-4">
-                    <Button className="w-full text-lg py-6 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-xl">
-                      <Package className="mr-2 h-5 w-5" />
+                  <div className="space-y-3">
+                    <Button className="w-full py-4 bg-blue-600 hover:bg-blue-700">
+                      <Package className="mr-2 h-4 w-4" />
                       Book Shipment Now
                     </Button>
-                    <Button variant="outline" className="w-full text-lg py-6 border-2 bg-transparent">
-                      <Star className="mr-2 h-5 w-5" />
+                    <Button variant="outline" className="w-full py-4 border-gray-300 bg-white hover:bg-gray-50">
+                      <Star className="mr-2 h-4 w-4" />
                       Save Quote
                     </Button>
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-16 space-y-6">
-                  <div className="mx-auto h-20 w-20 bg-gradient-to-r from-muted to-muted-foreground/20 rounded-full flex items-center justify-center">
-                    <Calculator className="h-10 w-10 text-muted-foreground" />
+                <div className="text-center py-12 space-y-4">
+                  <div className="mx-auto h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center">
+                    <Calculator className="h-6 w-6 text-gray-400" />
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold">Ready to Calculate?</h3>
-                    <p className="text-muted-foreground text-lg">
-                      Enter your package details to get an instant, accurate shipping quote
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-medium">Ready to Calculate?</h3>
+                    <p className="text-gray-500">
+                      Enter your package details to get an instant shipping quote
                     </p>
                   </div>
                 </div>
@@ -323,39 +320,42 @@ export default function CalculatorPage() {
         </div>
 
         {/* Features */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
             {
               icon: Shield,
               title: "Transparent Pricing",
               description: "No hidden fees. Complete transparency in all cost calculations.",
-              gradient: "from-emerald-500 to-teal-500",
+              color: "text-blue-600",
+              bgColor: "bg-blue-50",
             },
             {
               icon: Zap,
               title: "Instant Quotes",
-              description: "Get accurate shipping costs in seconds with AI-powered calculations.",
-              gradient: "from-blue-500 to-cyan-500",
+              description: "Get accurate shipping costs in seconds with our calculations.",
+              color: "text-green-600",
+              bgColor: "bg-green-50",
             },
             {
               icon: Truck,
               title: "Multiple Services",
-              description: "Choose from various delivery options to match your timeline and budget.",
-              gradient: "from-purple-500 to-violet-500",
+              description: "Choose from various delivery options to match your needs.",
+              color: "text-purple-600",
+              bgColor: "bg-purple-50",
             },
           ].map((feature, index) => (
             <Card
               key={index}
-              className="text-center border-2 hover:border-primary/20 transition-all duration-300 hover:shadow-xl bg-gradient-to-br from-card to-muted/20"
+              className="text-center border border-gray-200 bg-white hover:shadow-md transition-shadow"
             >
-              <CardContent className="pt-8 pb-8">
+              <CardContent className="p-6">
                 <div
-                  className={`mx-auto h-16 w-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center mb-6`}
+                  className={`mx-auto h-12 w-12 ${feature.bgColor} rounded-lg flex items-center justify-center mb-4`}
                 >
-                  <feature.icon className="h-8 w-8 text-white" />
+                  <feature.icon className={`h-5 w-5 ${feature.color}`} />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
